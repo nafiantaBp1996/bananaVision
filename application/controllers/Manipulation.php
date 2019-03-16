@@ -19,6 +19,7 @@ class Manipulation extends CI_Controller {
             'name' => $fileName,
         );
         $json_respnse=$this->curl->simple_post('http://localhost/bananaApi/index.php/dataset', $datas, array(CURLOPT_BUFFERSIZE => 10));
+        //var_dump($json_respnse);
         $data['img'] = json_decode($json_respnse);
         if ($data['img']->status == 'sukses') {
             $this->load->view('partial/header');
