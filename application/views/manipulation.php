@@ -1,23 +1,23 @@
 <link rel="stylesheet" href="<?php echo base_url('')?>assets/css/spinner.css">
 <div class="col-12">
   <div class="row">
-     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding-top: 60px">
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="center" >
           <h4 class="card-title">Original Image</h4>
-          <canvas id="canvas" width="150" height="200" style="background-color:white;margin-bottom: 10px"></canvas>
+          <canvas id="canvas" width="200" height="150" style="background-color:white;margin-bottom: 10px"></canvas>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="center">
           <h4 class="card-title">Grayscale</h4>
-          <canvas id="canvas1" width="150" height="200" style="background-color:white;margin-bottom: 10px"></canvas>
+          <canvas id="canvas1" width="200" height="150" style="background-color:white;margin-bottom: 10px"></canvas>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="center">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="center" style="padding-top: 30px">
           <h4 class="card-title">Treshold</h4>
-          <canvas id="canvas2" width="150" height="200" style="background-color:white"></canvas>
+          <canvas id="canvas2" width="200" height="150" style="background-color:white"></canvas>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="center">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" align="center" style="padding-top: 30px">
           <h4 class="card-title">Segmentasi</h4>
-          <canvas id="canvas3" width="150" height="200" style="background-color:white"></canvas>
+          <canvas id="canvas3" width="200" height="150" style="background-color:white"></canvas>
         </div>
       </div>   
      </div>
@@ -180,7 +180,7 @@
         <!-- <input id="grayscalebtn" class="btn btn-warning mr-2 btn-block" value="Ekstraksi Citra" type="button"> -->
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <button id="saveBtn" class="btn btn-success mr-2 btn-block" type="button">
+          <button id="saveBtn" class="btn btn-success mr-2 btn-block" type="button" disabled>
             <span id="spinner-loadSimpan"></span>
             <span id="textBtnSimpan">Simpan Data</span>
           </button>
@@ -204,14 +204,14 @@
     var hue= $('#hueInp').val();
     var sat = $('#saturInp').val();
     var int = $('#intenInp').val();
-    var ent = $('#entroInp').val();
-    var con = $('#contrasInp').val();
-    var hom = $('#homogenInp').val();
-    var ene = $('#energyInp').val();
+    var ent = $('#inpEntropyAvg').val();
+    var con = $('#inpContrasAvg').val();
+    var hom = $('#inpHomogenAvg').val();
+    var ene = $('#inpEnergyAvg').val();
+    var cor = $('#inpCorelationAvg').val();
     var filename = $('#filenameInp').val();
     var kematangan = $('#kematanganInp').val();
     var prediksi = $('#prediksiInp').val();
-
     if (prediksi == "")
     {
       document.getElementById("prediksiInp").style.backgroundColor = '#ffdddd';
@@ -222,10 +222,10 @@
       $.ajax({
         type: "POST",
         url: 'http://localhost/bananaApi/index.php/Ekstraksi',
-        data: {redInp:red,greenInp:green,blueInp:blue,hueInp:hue,saturInp:sat,intenInp:int,entroInp:ent,contrasInp:con,homogenInp:hom,energyInp:ene,filenameInp:filename,kematanganInp:kematangan,prediksiInp:prediksi},
+        data: {redInp:red,greenInp:green,blueInp:blue,hueInp:hue,saturInp:sat,intenInp:int,entroInp:ent,contrasInp:con,homogenInp:hom,energyInp:ene,corelationInp:cor,filenameInp:filename,kematanganInp:kematangan,prediksiInp:prediksi},
         dataType: 'json',
         success : function(response){
-          location.replace("<?php echo site_url('') ?>");
+          location.replace("<?php echo site_url('dataset') ?>");
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           alert("some error");
@@ -288,6 +288,8 @@ var getExtract = function () {
         $('#inpCorelationAvg').val(response.glcm.glcmavg.korelasi);
         $('#spinner-load').removeClass('spinner-border spinner-border-sm');
         document.getElementById("textBtnExtract").innerHTML = "Ekstraksi Citra";
+        document.getElementById("extractBtn").disabled = true;
+        document.getElementById("saveBtn").disabled = false;
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
       alert("some error");}
@@ -303,7 +305,7 @@ function draw(img) {
   var ctx2 = canvas2.getContext('2d');
   var ctx3 = canvas3.getContext('2d');
   var ctx4 = canvas4.getContext('2d');
-  ctx.drawImage(img, 0, 0,150,200);
+  ctx.drawImage(img, 0, 0,200,150);
   img.style.display = 'none';
   var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   var imageData2 = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -324,7 +326,7 @@ function draw(img) {
         data[i]     = avg; // red
         data[i + 1] = avg; // green
         data[i + 2] = avg; // blue 
-        if ((data2[i] >= 100 && data2[i+1] >= 100 && data2[i+2]<100) || avg<100 ) 
+        if ((data2[i] >= 110 && data2[i+1] >= 110 && data2[i+2]<110) || avg<110 ) 
           {
             data2[i]     = 255; // red
             data2[i + 1] = 255; // green

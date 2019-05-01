@@ -4,8 +4,8 @@
         <footer class="footer" style="background-color: #fff8c4">
           <div class="container-fluid clearfix">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2018
-              <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">dibimbing oleh : Dr.Eng Cahya Rahman Mt.Mcs & Mungki Astiningrum Mt.Mcs
+              <a href="http://www.polinema.ac.id/" target="_blank">Bootstrap - Politeknik Negeri Malang</a>. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">dibimbing oleh : Dr.Eng Cahya Rahmad, S.T., M.Kom. & Mungki Astiningrum, S.T., M.Kom.
             </span>
           </div>
         </footer>
@@ -28,6 +28,7 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+  
 </body>
 
 </html>

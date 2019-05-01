@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Banana Vision - nfnt</title>
   <!-- plugins:css -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="<?php echo base_url('')?>assets/js/jquery.min.js"></script>
   <link rel="stylesheet" href="<?php echo base_url('')?>assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="<?php echo base_url('')?>assets/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="<?php echo base_url('')?>assets/vendors/css/vendor.bundle.addons.css">
@@ -17,7 +17,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="<?php echo base_url('')?>assets/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?php echo base_url('')?>assets/images/favicon.png" />
+  <link rel="shortcut icon" href="<?php echo base_url('')?>assets/images/logo/logo1.png" />
 </head>
 
 <body>
@@ -50,6 +50,7 @@
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
+              <img style="margin-bottom: 15px;margin-top: 0px;" src="<?php echo base_url('')?>assets/images/faces/polinema.png" class="img img-responsive">
               <div class="user-wrapper">
                 <div class="profile-image">
                   <img src="<?php echo base_url('')?>assets/images/faces/face1.jpg" alt="profile image">
@@ -57,8 +58,7 @@
                 <div class="text-wrapper">
                   <p class="profile-name">Nafianta Bp</p>
                   <div>
-                    <small class="designation text-muted">Mahasiswa Lemah</small>
-                    <span class="status-indicator online"></span>
+                    <small class="designation text-muted">Mahasiswa <br> Teknik Informatika</small>
                   </div>
                 </div>
               </div>
@@ -68,7 +68,13 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('')?>assets/index.html">
+            <a style="color: #888888" class="nav-link" href="<?php echo site_url('')?>">
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a style="color: #888888"  class="nav-link" href="<?php echo site_url('dataset')?>">
               <i class="menu-icon mdi mdi-database"></i>
               <span class="menu-title">Data Set</span>
             </a>

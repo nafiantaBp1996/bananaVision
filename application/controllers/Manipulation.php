@@ -9,7 +9,7 @@ class Manipulation extends CI_Controller {
 		$this->load->view('manipulation');
 		$this->load->view('partial/footer');
 	}
-	public function data(){   
+	public function data(){
         $img=file_get_contents($_FILES['fileImg']['tmp_name']);
         $datImg = base64_encode($img);
         $fileName = date('ydmshsi').'.jpg';

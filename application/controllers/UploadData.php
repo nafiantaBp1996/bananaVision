@@ -15,7 +15,7 @@ class UploadData extends CI_Controller {
         $config['upload_path'] = './assets/dataset/'; //buat folder dengan nama assets di root folder
         $config['file_name'] = $fileName;
         $config['allowed_types'] = 'jpg|jpeg';
-        $config['max_size'] =50000;
+        $config['max_size'] =5000000;
          
         $this->load->library('upload');
         $this->upload->initialize($config);
