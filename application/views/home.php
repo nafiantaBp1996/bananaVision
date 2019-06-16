@@ -38,7 +38,7 @@
               <i class="mdi mdi-database icon-lg" style="color:#cef442"></i>
             </div>
             <div class="float-right">
-              <p class="mb-0 text-right">Pisang Setengah Mentah</p>
+              <p class="mb-0 text-right">Pisang Setengah Matang</p>
               <div class="fluid-container">
                 <h3 class="font-weight-medium text-right mb-0"> <?php echo $dataScatter->jumSet ?> Buah</h3>
               </div>
@@ -170,7 +170,7 @@
               <span class="input-group-append">
                 <button class="file-upload-browse btn btn-default" type="button">Nilai K</button>
               </span>
-              <input type="number" id="input-knn" class="form-control file-upload-info"  min="3" max="5" required="" value="<?php echo $datametode[2]->nilai ?>">
+              <input type="number" id="input-knn" class="form-control file-upload-info"  min="1" max="5" required="" value="<?php echo $datametode[2]->nilai ?>">
               <span class="input-group-append">
                 <button class="file-upload-browse btn btn-success" id="button-upd" type="button">Update</button>
               </span>
@@ -251,7 +251,7 @@
 
   function knnUpd(){
     var nilai =$("#input-knn").val();
-    if (nilai>2 && nilai<6 ) {
+    if (nilai>0 && nilai<6 ) {
       $.ajax({
           type: "POST",
           url: 'http://localhost/bananaApi/index.php/metode',
@@ -267,7 +267,7 @@
         });
     }
     else{
-      $("#status-knn").html("Gagal, Minimum 3 Maksimal 5");
+      $("#status-knn").html("Gagal, Minimum 1 Maksimal 5");
     }
   }
 

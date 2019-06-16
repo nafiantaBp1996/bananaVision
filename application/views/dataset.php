@@ -20,7 +20,8 @@
               <th>Entropy</th>
               <th>Corelation</th>
               <th>Keterangan</th>
-              <th>prediksi</th> 
+              <th>prediksi</th>
+              <th></th> 
             </tr>
           </thead>
           <tbody>
@@ -38,6 +39,7 @@
               <td><?php echo $key->corelation?></td>
               <td><?php echo $key->kematangan ?></td>
               <td><?php echo $key->prediksi ?></td>
+              <td><a style="color: white" class="btn btn-large btn-danger" onclick="deletes(<?php echo  $key->id_dataset  ?>)">Delete</a></td>
             </tr>
             <?php $i++;} ?>
           </tbody>
@@ -65,7 +67,8 @@
               <th>Entropy</th>
               <th>Corelation</th>
               <th>Keterangan</th>
-              <th>prediksi</th> 
+              <th>prediksi</th>
+              <th></th> 
             </tr>
           </thead>
           <tbody>
@@ -83,6 +86,7 @@
               <td><?php echo $key->corelation?></td>
               <td><?php echo $key->kematangan ?></td>
               <td><?php echo $key->prediksi ?></td>
+              <td><a style="color: white" class="btn btn-large btn-danger" onclick="deletes(<?php echo  $key->id_dataset  ?>)">Delete</a></td>
             </tr>
             <?php $i++;} ?>
           </tbody>
@@ -110,7 +114,8 @@
               <th>Entropy</th>
               <th>Corelation</th>
               <th>Keterangan</th>
-              <th>prediksi</th> 
+              <th>prediksi</th>
+              <th></th> 
             </tr>
           </thead>
           <tbody>
@@ -128,6 +133,7 @@
               <td><?php echo $key->corelation?></td>
               <td><?php echo $key->kematangan ?></td>
               <td><?php echo $key->prediksi ?></td>
+              <td><a style="color: white" class="btn btn-large btn-danger" onclick="deletes(<?php echo  $key->id_dataset  ?>)">Delete</a></td>
             </tr>
             <?php $i++;} ?>
           </tbody>
@@ -143,4 +149,21 @@
     $('#tblSetmatang').DataTable();
     $('#tblMentah').DataTable();
   });
+</script>
+<script>
+    function deletes(id){
+    //alert("delete Data "+id);
+    $.ajax({
+        type: "POST",
+        url: 'http://localhost/bananaApi/index.php/dataset/delete',
+        data: {id_dataset:id},
+        dataType: 'json',
+        success : function(response){
+          location.replace("<?php echo site_url('dataset') ?>");
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          alert("some error");
+        }
+      });
+  };
 </script>
